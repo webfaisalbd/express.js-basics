@@ -13,3 +13,7 @@ steps:
 - get  , for getting
 - put  , for updating 
 - delete  , for deleting 
+
+## http methods and postman
+- install postman
+- if server is off, postman not work.
