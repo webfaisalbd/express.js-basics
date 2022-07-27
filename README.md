@@ -19,7 +19,7 @@ steps:
 - if server is off, postman not work.
 
 
-### http response
+# http response
 
 - body can contain data as html, text, json etc.
 - cookies
@@ -99,3 +99,53 @@ app.get('/login', (req,res)=> {
 ---
 
 
+# http request
+
+
+### http request with `query parameter`
+- search: `http://localhost:3000/?id=101&name=faisal`
+```javascript
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+    // const id = req.query.id;
+    // const name = req.query.name;
+    const { id, name } = req.query;
+    res.send(`<h1>Student id is : ${id} and name is : ${name}</h1>`);
+})
+
+
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+})
+```
+
+### http request with `route parameter`
+- search: `http://localhost:3000/userId/101/userAge/25`
+```javascript
+// route parameter
+app.get('/userId/:id/userAge/:age',(req,res)=>{
+   const id = req.params.id;
+   const age = req.params.age;
+
+   res.send(`<h1>Student id is : ${id} and age is : ${age}</h1>`)
+
+})
+
+
+```
+
+### http request with `headers`
+
+```javascript
+// headers
+app.get('/',(req,res)=>{
+   const id = req.header('id');
+   const name = req.header('name');
+
+   res.send(`<h1>Student id is : ${id} and name is : ${name}</h1>`)
+
+})
+```
