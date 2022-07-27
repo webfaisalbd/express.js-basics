@@ -216,4 +216,37 @@ app.listen(PORT, ()=> {
 ---
 
 
+## Environment file (.env file)
+- .env file full form environment file
+- secret/ hidden file, only you can access it
+
+`Why .evn file`
+- to store private environment variables for your application. Example:
+- http PORT to listen the server
+- database url
+- api keys etc.
+
+### How to use .env variables
+- step 1: create an .env file in the root directory
+- `Example`: 
+- .env 
+- step 2: define environment variable using uppercase letter and for multiple word use underscore. 
+- `Example`: 
+- PORT
+- DATABASE_URL
+- step 3: assign the values without double quotation and space
+- `Example`:
+- PORT=3000
+- step 4: you can make a comment using ( # ) in environment file. 
+- `Example`:
+- # server port
+- step 5: npm install dotenv
+- step 6: require('dotenv').config();
+- step 7: access the env variables from anywhere using process.env.PORT
+- `Example`:
+- process.env.PORT
+- step 8: go to .gitignore and keep .env in .gitignore 
+
+
+
 
