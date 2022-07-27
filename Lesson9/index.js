@@ -20,14 +20,28 @@ const PORT = 3000;
 // })
 
 // headers
-app.get('/',(req,res)=>{
-   const id = req.header('id');
-   const name = req.header('name');
+// app.get('/',(req,res)=>{
+//    const id = req.header('id');
+//    const name = req.header('name');
 
-   res.send(`<h1>Student id is : ${id} and name is : ${name}</h1>`)
+//    res.send(`<h1>Student id is : ${id} and name is : ${name}</h1>`)
 
+// })
+
+
+// post 
+
+const bodyParser = require('body-parser');
+// form er maddhome data send
+app.use(bodyParser.urlencoded({ extended: false }))
+// json er maddhome data send
+app.use(bodyParser.json())
+
+app.post('/user',(req,res)=> {
+    const name = req.body.name;
+    const age = req.body.age;
+    res.send(`Welcome ${name}. And You are ${age} years old.`);
 })
-
 
 
 app.listen(PORT, () => {

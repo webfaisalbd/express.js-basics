@@ -149,3 +149,70 @@ app.get('/',(req,res)=>{
 
 })
 ```
+
+--- 
+
+## Data send and receive using form
+
+```javascript
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const PORT = 3000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get('/register',(req,res)=>{
+    // console.log(__dirname);
+    res.sendFile(__dirname+'/views/register.html');
+})
+
+app.post('/register',(req,res)=>{
+    // res.send("hello R.")
+    const fullName = req.body.fullName;
+    const age = req.body.age;
+    res.send(`Full Name is ${fullName} and age is ${age}`)
+
+})
+
+app.listen(PORT, ()=> {
+    console.log(`Server running at http://localhost:${PORT}`);
+})
+```
+
+
+- `register.html` file
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+</head>
+
+<body>
+    <h1>Welcome to Registration Page</h1>
+    <form action="/register" method="POST">
+        <div>
+            <label for="fullName">Full Name</label>
+            <input type="text" name="fullName" id="fullName">
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+
+</html>
+```
+
+---
+
+
+
